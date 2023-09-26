@@ -1,12 +1,15 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QPixmap, QIcon
+from PyQt5.QtCore import Qt
 
 class HomePage(QMainWindow):
     def __init__(self):
         super(HomePage,self).__init__()
         self.setWindowTitle("Recipe Generator")
         self.setWindowIcon(QIcon("GUI/HomePageIcon.jpg"))
+        with open("GUI/Styles/HomePage.css","r") as file:
+            self.setStyleSheet(file.read())
     
     def createUI(self) -> None:
         self.topLayout = QVBoxLayout() #Create top level layout
@@ -42,20 +45,23 @@ class HomePage(QMainWindow):
     def createIngridientInput(self) -> None:
         self.ingredientField = QtWidgets.QLineEdit()
 
+        self.ingredientLabel = QtWidgets.QLabel("Ingredient: ")
+        self.ingredientLabel.setObjectName("ingredientLabel")
+
         self.ingredientField.textChanged.connect(self.ingredientRecommend)
 
         self.ingredientFormLayout = QtWidgets.QFormLayout()
 
-        self.ingredientFormLayout.addRow("Ingredient: ",self.ingredientField)
+        self.ingredientFormLayout.addRow(self.ingredientLabel,self.ingredientField)
 
         self.topLayout.addLayout(self.ingredientFormLayout)
 
     def createAddIngredientButton(self) -> None:
         self.addIngredientButton = QtWidgets.QPushButton("Add Ingredient")
-        self.addIngredientButton.resize(self.addIngredientButton.width()//2,self.addIngredientButton.height()*2)
+        self.addIngredientButton.setObjectName("addIngredientButton")
         self.addIngredientButton.clicked.connect(self.addIngredient)
 
-        self.topLayout.addWidget(self.addIngredientButton)
+        self.topLayout.addWidget(self.addIngredientButton,alignment= Qt.AlignmentFlag.AlignCenter)
 
     #This function will add the ingredient to the ingredients list
     def addIngredient(self) -> None:
