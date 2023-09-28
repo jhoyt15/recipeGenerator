@@ -5,16 +5,37 @@ QMainWindow {
 QPushButton#addIngredientButton {
     background-color: rgb(135,206,235);
     color: rgb(0,0,0);
-    border: 2px solid rgb(0,0,0);
-    border-radius: 20px;
+    border-width: 3px;
     border-style: outset;
-    padding: 5px;
-}
+    border-color: rgb(58, 92, 148);
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 14px;
+    padding-right: 35px;
+    padding-left: 35px;
 
-QPushButton:pressed{
-    background-color: rgb(255,255,255);
+    background-image: linear-gradient(to right,rgb(199, 224, 235),rgb(26, 173, 237))
+}
+QPushButton#addIngredientButton:pressed{
+    background: rgb(255,255,255);
+    border-color: rgb(255,255,255);
 }
 
 QLabel#ingredientLabel {
     color: rgb(255,255,255);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+QLineEdit#addIngredientField {
+    background-color: rgb(211,211,211);
+    border-width: 3px;
+    border-style:outset; 
+    border-color: rgb(120, 119, 119);
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 16px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }

@@ -4,6 +4,8 @@ from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtCore import Qt
 
 class HomePage(QMainWindow):
+    ingredientList = [] #List of all ingredients that the user has entered
+
     def __init__(self):
         super(HomePage,self).__init__()
         self.setWindowTitle("Recipe Generator")
@@ -44,6 +46,7 @@ class HomePage(QMainWindow):
     #This function will create the area for users to input ingredients into the list
     def createIngridientInput(self) -> None:
         self.ingredientField = QtWidgets.QLineEdit()
+        self.ingredientField.setObjectName("addIngredientField")
 
         self.ingredientLabel = QtWidgets.QLabel("Ingredient: ")
         self.ingredientLabel.setObjectName("ingredientLabel")
@@ -58,13 +61,22 @@ class HomePage(QMainWindow):
 
     def createAddIngredientButton(self) -> None:
         self.addIngredientButton = QtWidgets.QPushButton("Add Ingredient")
+        self.addIngredientButtonIcon = QIcon("GUI/plusIcon.png")
+        self.addIngredientButton.setIcon(self.addIngredientButtonIcon)
         self.addIngredientButton.setObjectName("addIngredientButton")
         self.addIngredientButton.clicked.connect(self.addIngredient)
+        self.addIngredientButton.setEnabled(True)
 
         self.topLayout.addWidget(self.addIngredientButton,alignment= Qt.AlignmentFlag.AlignCenter)
 
     #This function will add the ingredient to the ingredients list
     def addIngredient(self) -> None:
+        print("Clicked")
+        self.ingredientList.append(self.ingredientField.text())
+        print(self.ingredientList)
+
+    #This function will initialize and add the list of selected ingredients
+    def addSelectedIngredientsSection(self):
         pass
 
 
