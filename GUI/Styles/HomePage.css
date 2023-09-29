@@ -36,6 +36,11 @@ QLineEdit#addIngredientField {
     border-radius: 10px;
     padding-left: 5px;
     padding-right: 5px;
+    font-family: "Segoe UI","Tahoma", "Geneva", "Verdana", "sans-serif";
     font-size: 16px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-weight: bold;
+}
+
+QGroupBox {
+    color: rgb(255,255,255);
 }
