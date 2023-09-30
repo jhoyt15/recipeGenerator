@@ -11,6 +11,7 @@ QPushButton#addIngredientButton {
     border-radius: 15px;
     font-size: 18px;
     font-weight: bold;
+    font-family: "Segoe UI","Tahoma", "Geneva", "Verdana", "sans-serif";
     padding: 14px;
     padding-right: 35px;
     padding-left: 35px;
@@ -26,6 +27,7 @@ QLabel#ingredientLabel {
     color: rgb(255,255,255);
     font-size: 16px;
     font-weight: bold;
+    font-family: "Segoe UI","Tahoma", "Geneva", "Verdana", "sans-serif";
 }
 
 QLineEdit#addIngredientField {
@@ -41,6 +43,21 @@ QLineEdit#addIngredientField {
     font-weight: bold;
 }
 
-QGroupBox {
+QTableWidget#ingredientTable {
+    background-color: rgb(40,40,40);
     color: rgb(255,255,255);
+}
+QTableCornerButton::section{
+    background-color: rgb(40,40,40);
+    color: rgb(255,255,255);
+}
+QHeaderView::section{
+    background-color: rgb(40,40,40);
+    color: rgb(255,255,255);
+}
+QLabel{
+    color: rgb(255,255,255);
+    font-size: 12px;
+    font-weight: bold;
+    font-family: "Segoe UI","Tahoma", "Geneva", "Verdana", "sans-serif";
 }

@@ -82,7 +82,8 @@ class HomePage(QMainWindow):
             deleteButton.setIcon(QIcon("GUI/Images/deleteIcon.png"))
             deleteButton.clicked.connect(self.deleteIngredient)
             self.ingredientListWidgets.append(deleteButton)
-            self.ingredientsSelectedLayout.addRow(ingredientName,deleteButton)
+            self.ingredientsTable.insertRow(self.ingredientsTable.rowCount())
+            self.ingredientsTable.setCellWidget(self.ingredientsTable.rowCount()-1,0,ingredientName)
 
     def deleteIngredient(self):
         button = self.sender()
@@ -91,14 +92,14 @@ class HomePage(QMainWindow):
 
     #This function will initialize and add the list of selected ingredients
     def addSelectedIngredientsSection(self):
-        self.ingredientsSelected = QGroupBox("Selected Ingredients") #Create the group box to hold all the ingredients
-        self.ingredientsSelected.setFixedHeight(200)
+        self.ingredientsTable = QTableWidget()
+        self.ingredientsTable.setObjectName("ingredientTable")
+        self.ingredientsTable.setColumnCount(2)
+        self.ingredientsTable.setFixedHeight(200)
+        self.ingredientsTable.setHorizontalHeaderLabels(["Ingredient","Delete"])
+        self.ingredientsTable.horizontalHeader().setSectionResizeMode(0,QtWidgets.QHeaderView.Stretch)
 
-        self.ingredientsSelectedLayout = QFormLayout() #Main layout for the group box
-
-        self.ingredientsSelected.setLayout(self.ingredientsSelectedLayout)
-
-        self.topLayout.addWidget(self.ingredientsSelected)
+        self.topLayout.addWidget(self.ingredientsTable)
 
 
     def ingredientRecommend(self) -> None:
