@@ -1,8 +1,8 @@
 import dataHandling.dbInit as dbInit
 import dataHandling.recipeDataHandler as recipeDataHandler
 import dataHandling.generateRecipe as generateRecipe
-from GUI.HomePage import HomePage
 from PyQt5.QtWidgets import QApplication
+from GUI.MainPage import MainPage
 import sys
 
 #password = input("Input Password: ")
@@ -13,6 +13,5 @@ import sys
 
 QApp = QApplication(sys.argv)
 #application = PasswordWindow()
-application = HomePage()
-application.createUI()
+application = MainPage()
 sys.exit(QApp.exec_())

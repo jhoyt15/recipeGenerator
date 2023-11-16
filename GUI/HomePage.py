@@ -1,18 +1,18 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QPixmap, QIcon
-from PyQt5.QtCore import Qt
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 
-class HomePage(QMainWindow):
+class HomePage(QFrame):
     ingredientList = [] #List of all ingredients that the user has entered
     ingredientListWidgets = []
 
     def __init__(self):
         super(HomePage,self).__init__()
-        self.setWindowTitle("Recipe Generator")
-        self.setWindowIcon(QIcon("GUI/Images/HomePageIcon.jpg"))
+        self.setObjectName("HomePage")
         with open("GUI/Styles/HomePage.css","r") as file:
             self.setStyleSheet(file.read())
+        self.createUI()
     
     def createUI(self) -> None:
         self.topLayout = QVBoxLayout() #Create top level layout
@@ -27,12 +27,15 @@ class HomePage(QMainWindow):
         self.createAddIngredientButton()
 
         self.addSelectedIngredientsSection()
+        
+        self.addGenerateRecipeButton()
 
         topWidget = QtWidgets.QWidget()
         topWidget.setLayout(self.topLayout)
-        self.setCentralWidget(topWidget)
-
-        self.show()
+        
+        #self.setCentralWidget(topWidget)
+        self.setLayout(self.topLayout)
+        #self.show()
 
     #This function will create the image that is at the top of the application
     def createImage(self) -> None:
@@ -44,7 +47,7 @@ class HomePage(QMainWindow):
 
         self.imageLabel.resize(self.imageMap.width(),self.imageMap.height()) #Resize the label to fit the picture
 
-        self.topLayout.addWidget(self.imageLabel) #Add the image to the top level layout
+        self.topLayout.addWidget(self.imageLabel,alignment= Qt.AlignmentFlag.AlignCenter) #Add the image to the top level layout
 
     #This function will create the area for users to input ingredients into the list
     def createIngridientInput(self) -> None:
@@ -75,7 +78,7 @@ class HomePage(QMainWindow):
     #This function will add the ingredient to the ingredients list
     def addIngredient(self) -> None:
         text = self.ingredientField.text()
-        if text != "": 
+        if text != "" and self.ingredientList.__contains__(text) == False: 
             self.ingredientList.append(text)
             ingredientName = QLabel(text.capitalize())
             deleteButton = QPushButton()
@@ -84,10 +87,12 @@ class HomePage(QMainWindow):
             self.ingredientListWidgets.append(deleteButton)
             self.ingredientsTable.insertRow(self.ingredientsTable.rowCount())
             self.ingredientsTable.setCellWidget(self.ingredientsTable.rowCount()-1,0,ingredientName)
+            self.ingredientsTable.setCellWidget(self.ingredientsTable.rowCount()-1,1,deleteButton)
 
     def deleteIngredient(self):
         button = self.sender()
-        self.ingredientsSelectedLayout.removeRow(button)
+        self.ingredientsTable.removeRow(self.ingredientListWidgets.index(button))
+        self.ingredientList.pop(self.ingredientListWidgets.index(button))
         self.ingredientListWidgets.remove(button)
 
     #This function will initialize and add the list of selected ingredients
@@ -104,3 +109,9 @@ class HomePage(QMainWindow):
 
     def ingredientRecommend(self) -> None:
         pass
+
+    def addGenerateRecipeButton(self) -> None:
+        self.generateRecipeButton = QtWidgets.QPushButton("Generate Recipes")
+        self.generateRecipeButton.setObjectName("generateRecipeButton")
+        #self.generateRecipeButton.clicked.connect(RecipePage)
+        self.topLayout.addWidget(self.generateRecipeButton,alignment= Qt.AlignmentFlag.AlignCenter)
