@@ -12,6 +12,5 @@ import sys
 #print(recipeList)
 
 QApp = QApplication(sys.argv)
-#application = PasswordWindow()
 application = MainPage()
 sys.exit(QApp.exec_())

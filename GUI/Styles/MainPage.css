@@ -3,12 +3,9 @@ QMainWindow {
     border:none;
 }
 
-QTabWidget#navTab::tab {
-    width: 1000px;
-    border: none;
-}
-
-QTabWidget#navTab {
+#navTab::pane {
     background-color: rgb(40,40,40);
     border: none;
 }
+
+

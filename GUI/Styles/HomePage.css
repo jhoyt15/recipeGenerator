@@ -7,10 +7,8 @@ QFrame#HomePage {
 QPushButton#addIngredientButton {
     background-color: rgb(135,206,235);
     color: rgb(0,0,0);
-    border-width: 3px;
-    border-style: outset;
-    border-color: rgb(58, 92, 148);
     border-radius: 15px;
+    border: 2px solid white;
     font-size: 18px;
     font-weight: bold;
     font-family: "Segoe UI","Tahoma", "Geneva", "Verdana", "sans-serif";
@@ -57,6 +55,7 @@ QHeaderView::section{
     background-color: rgb(40,40,40);
     color: rgb(255,255,255);
 }
+
 QLabel{
     color: rgb(255,255,255);
     font-size: 12px;
@@ -67,10 +66,8 @@ QLabel{
 QPushButton#generateRecipeButton {
     background-color: rgb(135,206,235);
     color: rgb(0,0,0);
-    border-width: 3px;
-    border-style: outset;
-    border-color: rgb(58, 92, 148);
     border-radius: 15px;
+    border: 2px solid white;
     font-size: 18px;
     font-weight: bold;
     font-family: "Segoe UI","Tahoma", "Geneva", "Verdana", "sans-serif";
