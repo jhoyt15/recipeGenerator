@@ -20,9 +20,9 @@ class HomePage(QFrame):
         self.topLayout.setSpacing(30)
         self.topLayout.setContentsMargins(20,20,20,20)
 
-        self.createImage()
+        #self.createImage()
 
-        self.createIngridientInput()
+        self.createIngredientInput()
 
         self.createAddIngredientButton()
 
@@ -33,9 +33,7 @@ class HomePage(QFrame):
         topWidget = QtWidgets.QWidget()
         topWidget.setLayout(self.topLayout)
         
-        #self.setCentralWidget(topWidget)
         self.setLayout(self.topLayout)
-        #self.show()
 
     #This function will create the image that is at the top of the application
     def createImage(self) -> None:
@@ -50,7 +48,7 @@ class HomePage(QFrame):
         self.topLayout.addWidget(self.imageLabel,alignment= Qt.AlignmentFlag.AlignCenter) #Add the image to the top level layout
 
     #This function will create the area for users to input ingredients into the list
-    def createIngridientInput(self) -> None:
+    def createIngredientInput(self) -> None:
         self.ingredientField = QtWidgets.QLineEdit()
         self.ingredientField.setObjectName("addIngredientField")
 
@@ -100,7 +98,6 @@ class HomePage(QFrame):
         self.ingredientsTable = QTableWidget()
         self.ingredientsTable.setObjectName("ingredientTable")
         self.ingredientsTable.setColumnCount(2)
-        self.ingredientsTable.setFixedHeight(200)
         self.ingredientsTable.setHorizontalHeaderLabels(["Ingredient","Delete"])
         self.ingredientsTable.horizontalHeader().setSectionResizeMode(0,QtWidgets.QHeaderView.Stretch)
 
@@ -113,5 +110,5 @@ class HomePage(QFrame):
     def addGenerateRecipeButton(self) -> None:
         self.generateRecipeButton = QtWidgets.QPushButton("Generate Recipes")
         self.generateRecipeButton.setObjectName("generateRecipeButton")
-        #self.generateRecipeButton.clicked.connect(RecipePage)
+        self.generateRecipeButton.clicked.connect()
         self.topLayout.addWidget(self.generateRecipeButton,alignment= Qt.AlignmentFlag.AlignCenter)
