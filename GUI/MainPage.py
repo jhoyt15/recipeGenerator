@@ -1,11 +1,10 @@
-from PyQt5 import QtGui, QtWidgets
+from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from GUI.HomePage import HomePage
 from GUI.RecipePage import RecipePage
 from GUI.TabWindow import TabWindow
-from GUI.PageController import PageController
 class MainPage(QMainWindow):
     def __init__(self):
         super(MainPage,self).__init__()
@@ -25,8 +24,6 @@ class MainPage(QMainWindow):
         
         self.homePage = HomePage()
         self.recipePage = RecipePage()
-
-        self.controller = PageController(self.homePage,self.recipePage)
 
         homePageIcon = QIcon("GUI/Images/homePageIcon.png")
 

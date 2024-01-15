@@ -1,17 +1,11 @@
-import mysql.connector
+import sqlite3
 class RecipeDataHandler:
     #Class variables
     cursor = None
     connection = None
 
-    def __init__(self,credentials: dict):
-        hostKey = credentials["host"]
-        self.connection = mysql.connector.connect(
-            host = hostKey,
-            user = credentials["user"],
-            password = credentials["password"],
-            database = credentials["database"]
-            )
+    def __init__(self):
+        self.connection = sqlite3.connect('appdata.db')
         self.cursor = self.connection.cursor()
     
     #Execute a query and return the data in a numpy array

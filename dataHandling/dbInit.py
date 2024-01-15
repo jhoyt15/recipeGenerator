@@ -27,6 +27,7 @@ def databaseInitialize(database: recipeDataHandler.RecipeDataHandler) -> None:
         for row in rowReader:
             for x in row[7][1:len(row[7])-1].split(','):
                 database.executeQuery("INSERT INTO IngredientsToRecipe VALUES (%d,%d)" %(int(row[0]),int(x)))
+    database.commit()
 
 
 #name,id,minutes,contributor_id,submitted,tags,nutrition,n_steps,steps,description,ingredients,n_ingredients

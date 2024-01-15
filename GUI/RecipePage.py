@@ -13,6 +13,7 @@ class RecipePage(QFrame):
     def createUI(self):
         self.mainLayout = QVBoxLayout()
 
+        self.createProgressBar()
         self.createRecipeTable()
 
         self.setLayout(self.mainLayout)
@@ -22,10 +23,14 @@ class RecipePage(QFrame):
         self.recipeTable = QTableWidget()
         self.recipeTable.setObjectName("recipeTable")
         self.recipeTable.setColumnCount(2)
+        self.recipeTable.setRowCount(5)
         self.recipeTable.setHorizontalHeaderLabels(["Recipe Name","Link"])
         self.recipeTable.horizontalHeader().setSectionResizeMode(0,QtWidgets.QHeaderView.Stretch)
 
         self.mainLayout.addWidget(self.recipeTable)
 
-    def showRecipes(recipes :list) -> None:
-        pass
+    def createProgressBar(self) -> None:
+        self.recipeProgressBar = QProgressBar()
+
+        self.mainLayout.addWidget(self.recipeProgressBar)
+        self.recipeProgressBar.hide()

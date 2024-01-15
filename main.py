@@ -1,16 +1,9 @@
-import dataHandling.dbInit as dbInit
-import dataHandling.recipeDataHandler as recipeDataHandler
-import dataHandling.generateRecipe as generateRecipe
 from PyQt5.QtWidgets import QApplication
 from GUI.MainPage import MainPage
+from GUI.PageController import PageController
 import sys
-
-#password = input("Input Password: ")
-#credentials = {"host":"localhost","user":"root","password":password,"database":"recipeDatabase"}
-#database = recipeDataHandler.RecipeDataHandler(credentials)
-#recipeList = generateRecipe.generateRecipe(["beef","cheese"],database)
-#print(recipeList)
 
 QApp = QApplication(sys.argv)
 application = MainPage()
+controller = PageController(application.homePage,application.recipePage,application)
 sys.exit(QApp.exec_())

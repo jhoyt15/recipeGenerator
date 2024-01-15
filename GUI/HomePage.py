@@ -77,7 +77,7 @@ class HomePage(QFrame):
     def addIngredient(self) -> None:
         text = self.ingredientField.text()
         if text != "" and self.ingredientList.__contains__(text) == False: 
-            self.ingredientList.append(text)
+            self.ingredientList.append(text.lower())
             ingredientName = QLabel(text.capitalize())
             deleteButton = QPushButton()
             deleteButton.setIcon(QIcon("GUI/Images/deleteIcon.png"))
@@ -108,7 +108,6 @@ class HomePage(QFrame):
         pass
 
     def addGenerateRecipeButton(self) -> None:
-        self.generateRecipeButton = QtWidgets.QPushButton("Generate Recipes")
+        self.generateRecipeButton = QPushButton("Generate Recipes")
         self.generateRecipeButton.setObjectName("generateRecipeButton")
-        self.generateRecipeButton.clicked.connect()
         self.topLayout.addWidget(self.generateRecipeButton,alignment= Qt.AlignmentFlag.AlignCenter)
