@@ -13,6 +13,11 @@ class RecipePage(QFrame):
     def createUI(self):
         self.mainLayout = QVBoxLayout()
 
+        self.recipePageTitle = QLabel("Recipes")
+        self.recipePageTitle.setObjectName("recipePageTitle")
+        self.recipePageTitle.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.mainLayout.addWidget(self.recipePageTitle)
+
         self.createProgressBar()
         self.createRecipeTable()
 
@@ -26,6 +31,7 @@ class RecipePage(QFrame):
         self.recipeTable.setRowCount(5)
         self.recipeTable.setHorizontalHeaderLabels(["Recipe Name","Link"])
         self.recipeTable.horizontalHeader().setSectionResizeMode(0,QtWidgets.QHeaderView.Stretch)
+        self.recipeTable.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.mainLayout.addWidget(self.recipeTable)
 

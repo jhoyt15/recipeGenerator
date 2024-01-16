@@ -1,5 +1,6 @@
 QMainWindow {
-    background-color: rgb(40,40,40);
+    border-image: url(GUI/Images/background.png) 0 0 0 0 stretch stretch;
+    background-repeat: no-repeat;
     border:none;
 }
 

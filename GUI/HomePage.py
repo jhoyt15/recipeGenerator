@@ -20,11 +20,16 @@ class HomePage(QFrame):
         self.topLayout.setSpacing(30)
         self.topLayout.setContentsMargins(20,20,20,20)
 
-        #self.createImage()
-
         self.createIngredientInput()
 
+        self.ingredientAddGrid = QGridLayout()
+        self.ingredientAddGridWidget = QWidget()
+        self.ingredientAddGrid.setVerticalSpacing(20)
+        self.ingredientAddGridWidget.setLayout(self.ingredientAddGrid)
+        self.topLayout.addWidget(self.ingredientAddGridWidget)
+
         self.createAddIngredientButton()
+        self.createViewAllIngredientsButton()
 
         self.addSelectedIngredientsSection()
         
@@ -70,13 +75,20 @@ class HomePage(QFrame):
         self.addIngredientButton.setObjectName("addIngredientButton")
         self.addIngredientButton.clicked.connect(self.addIngredient)
         self.addIngredientButton.setEnabled(True)
+        self.addIngredientButton.setStyleSheet("background-color: qlineargradient(x1:0,x1:0,x2:1,y2:0 stop: 0 #323aad, stop: 1 #288bb5);")
+        self.ingredientAddGrid.addWidget(self.addIngredientButton)#,alignment= Qt.AlignmentFlag.AlignCenter)
 
-        self.topLayout.addWidget(self.addIngredientButton,alignment= Qt.AlignmentFlag.AlignCenter)
+    def createViewAllIngredientsButton(self)->None:
+        self.viewAllIngredientsButton = QPushButton("View All Ingredients")
+        self.viewAllIngredientsButton.setObjectName("viewAllIngredientsButton")
+        self.viewAllIngredientsButton.setEnabled(True)
+        self.viewAllIngredientsButton.setStyleSheet("background-color: qlineargradient(x1:0,x1:0,x2:1,y2:0 stop: 0 #323aad, stop: 1 #288bb5);")
+        self.ingredientAddGrid.addWidget(self.viewAllIngredientsButton)
 
     #This function will add the ingredient to the ingredients list
     def addIngredient(self) -> None:
         text = self.ingredientField.text()
-        if text != "" and self.ingredientList.__contains__(text) == False: 
+        if text != "" and self.ingredientList.__contains__(text.lower()) == False: 
             self.ingredientList.append(text.lower())
             ingredientName = QLabel(text.capitalize())
             deleteButton = QPushButton()
@@ -110,4 +122,6 @@ class HomePage(QFrame):
     def addGenerateRecipeButton(self) -> None:
         self.generateRecipeButton = QPushButton("Generate Recipes")
         self.generateRecipeButton.setObjectName("generateRecipeButton")
+        self.generateRecipeButton.setStyleSheet("background: qlineargradient(x1:0,x1:0,x2:1,y2:0 stop: 0 #323aad, stop: 1 #288bb5);")
         self.topLayout.addWidget(self.generateRecipeButton,alignment= Qt.AlignmentFlag.AlignCenter)
+
