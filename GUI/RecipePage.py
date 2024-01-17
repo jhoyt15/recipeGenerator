@@ -37,6 +37,8 @@ class RecipePage(QFrame):
 
     def createProgressBar(self) -> None:
         self.recipeProgressBar = QProgressBar()
+        self.recipeProgressBar.setStyleSheet("QProgressBar::chunk {"
+                                             "background-color: qlineargradient(x1:0,x1:0,x2:1,y2:0 stop: 0 #323aad, stop: 1 #288bb5);}")
 
         self.mainLayout.addWidget(self.recipeProgressBar)
         self.recipeProgressBar.hide()

@@ -1,11 +1,13 @@
 from GUI.HomePage import HomePage
 from GUI.RecipePage import RecipePage
 from GUI.MainPage import MainPage
+from GUI.IngredientForm import IngredientForm
 from dataHandling.recipeDataHandler import RecipeDataHandler
 from dataHandling.generateRecipe import generateRecipe
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from googlesearch import search
+import operator
 import webbrowser
 class PageController: 
     def __init__(self,homePage: HomePage,recipePage :RecipePage,mainPage: MainPage):
@@ -17,6 +19,10 @@ class PageController:
         self.searchThread = SearchThread(self.recipePage,self)
 
         self.homePage.generateRecipeButton.clicked.connect(self.generateAndShowRecipes)
+
+        ingredientCompleter = QCompleter(self.getAllIngredientNames())
+        ingredientCompleter.setCaseSensitivity(Qt.CaseInsensitive)
+        self.homePage.ingredientField.setCompleter(ingredientCompleter)
 
     def generateAndShowRecipes(self) -> None:
         self.recipeList = generateRecipe(self.homePage.ingredientList,self.databaseConnection)
@@ -52,6 +58,11 @@ class PageController:
     
     def updateProgressBar(self,val:int)->None:
         self.recipePage.recipeProgressBar.setValue(int((val/len(self.recipeList))*100))
+
+    def getAllIngredientNames(self)->list:
+        ingredients = self.databaseConnection.executeQuery("SELECT ingredient_name FROM Ingredients")
+        ingredients = list(map(operator.itemgetter(0),ingredients))
+        return [ingredient.capitalize() for ingredient in ingredients]
 
 class SearchThread(QThread):
     progress = pyqtSignal(int)

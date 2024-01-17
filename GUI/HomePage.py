@@ -29,7 +29,6 @@ class HomePage(QFrame):
         self.topLayout.addWidget(self.ingredientAddGridWidget)
 
         self.createAddIngredientButton()
-        self.createViewAllIngredientsButton()
 
         self.addSelectedIngredientsSection()
         
@@ -76,14 +75,7 @@ class HomePage(QFrame):
         self.addIngredientButton.clicked.connect(self.addIngredient)
         self.addIngredientButton.setEnabled(True)
         self.addIngredientButton.setStyleSheet("background-color: qlineargradient(x1:0,x1:0,x2:1,y2:0 stop: 0 #323aad, stop: 1 #288bb5);")
-        self.ingredientAddGrid.addWidget(self.addIngredientButton)#,alignment= Qt.AlignmentFlag.AlignCenter)
-
-    def createViewAllIngredientsButton(self)->None:
-        self.viewAllIngredientsButton = QPushButton("View All Ingredients")
-        self.viewAllIngredientsButton.setObjectName("viewAllIngredientsButton")
-        self.viewAllIngredientsButton.setEnabled(True)
-        self.viewAllIngredientsButton.setStyleSheet("background-color: qlineargradient(x1:0,x1:0,x2:1,y2:0 stop: 0 #323aad, stop: 1 #288bb5);")
-        self.ingredientAddGrid.addWidget(self.viewAllIngredientsButton)
+        self.ingredientAddGrid.addWidget(self.addIngredientButton)
 
     #This function will add the ingredient to the ingredients list
     def addIngredient(self) -> None:
