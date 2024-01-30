@@ -45,3 +45,27 @@ QProgressBar {
 QProgressBar::chunk {
     border-radius:10px;
 }
+
+QPushButton#loadFavRecipesButton{
+    color: rgb(0,0,0);
+    border-radius: 15px;
+    border: 1px solid black;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Segoe UI","Tahoma", "Geneva", "Verdana", "sans-serif";
+    padding: 14px;
+    padding-right: 35px;
+    padding-left: 35px;
+}
+QPushButton#loadFavRecipesButton:pressed{
+    background: rgb(255,255,255);
+    border-color: rgb(255,255,255);
+}
+
+QPushButton#favoriteRecipeButton {
+    background-color: transparent;
+}
+
+QPushButton#favoriteRecipeButton:pressed {
+    background-color: transparent;
+}

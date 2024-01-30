@@ -40,4 +40,6 @@ class MainPage(QMainWindow):
 
         self.setCentralWidget(mainWidget)
 
+        self.setMinimumSize(400,600)
+
         self.show()

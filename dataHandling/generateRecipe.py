@@ -1,5 +1,4 @@
 from dataHandling.recipeDataHandler import RecipeDataHandler
-import re
 
 #This function gets recipe recommendations using a list of user provided ingredients
 def generateRecipe(ingredients: list, database: RecipeDataHandler) -> list:

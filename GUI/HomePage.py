@@ -59,8 +59,6 @@ class HomePage(QFrame):
         self.ingredientLabel = QtWidgets.QLabel("Ingredient: ")
         self.ingredientLabel.setObjectName("ingredientLabel")
 
-        self.ingredientField.textChanged.connect(self.ingredientRecommend)
-
         self.ingredientFormLayout = QtWidgets.QFormLayout()
 
         self.ingredientFormLayout.addRow(self.ingredientLabel,self.ingredientField)
@@ -72,24 +70,9 @@ class HomePage(QFrame):
         self.addIngredientButtonIcon = QIcon("GUI/Images/plusIcon.png")
         self.addIngredientButton.setIcon(self.addIngredientButtonIcon)
         self.addIngredientButton.setObjectName("addIngredientButton")
-        self.addIngredientButton.clicked.connect(self.addIngredient)
         self.addIngredientButton.setEnabled(True)
         self.addIngredientButton.setStyleSheet("background-color: qlineargradient(x1:0,x1:0,x2:1,y2:0 stop: 0 #323aad, stop: 1 #288bb5);")
         self.ingredientAddGrid.addWidget(self.addIngredientButton)
-
-    #This function will add the ingredient to the ingredients list
-    def addIngredient(self) -> None:
-        text = self.ingredientField.text()
-        if text != "" and self.ingredientList.__contains__(text.lower()) == False: 
-            self.ingredientList.append(text.lower())
-            ingredientName = QLabel(text.capitalize())
-            deleteButton = QPushButton()
-            deleteButton.setIcon(QIcon("GUI/Images/deleteIcon.png"))
-            deleteButton.clicked.connect(self.deleteIngredient)
-            self.ingredientListWidgets.append(deleteButton)
-            self.ingredientsTable.insertRow(self.ingredientsTable.rowCount())
-            self.ingredientsTable.setCellWidget(self.ingredientsTable.rowCount()-1,0,ingredientName)
-            self.ingredientsTable.setCellWidget(self.ingredientsTable.rowCount()-1,1,deleteButton)
 
     def deleteIngredient(self):
         button = self.sender()
@@ -107,13 +90,9 @@ class HomePage(QFrame):
 
         self.topLayout.addWidget(self.ingredientsTable)
 
-
-    def ingredientRecommend(self) -> None:
-        pass
-
     def addGenerateRecipeButton(self) -> None:
         self.generateRecipeButton = QPushButton("Generate Recipes")
         self.generateRecipeButton.setObjectName("generateRecipeButton")
         self.generateRecipeButton.setStyleSheet("background: qlineargradient(x1:0,x1:0,x2:1,y2:0 stop: 0 #323aad, stop: 1 #288bb5);")
-        self.topLayout.addWidget(self.generateRecipeButton,alignment= Qt.AlignmentFlag.AlignCenter)
+        self.ingredientAddGrid.addWidget(self.generateRecipeButton)
 
